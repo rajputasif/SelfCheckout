@@ -1,6 +1,7 @@
 import yaml
 import cv2
 import numpy as np
+import pandas as pd
 
 def bb_intersection_over_union(boxA: list[int], boxB: list[int]) -> float:
     """
@@ -99,3 +100,41 @@ def draw_stats_dict(
         cv2.putText(img, f"{key}: {value}", (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
         y += delta_y
     return img
+
+class ScanLogger:
+    def __init__(self, file_name: str):
+        self.file_name = file_name
+        self.frame_id: int = None
+        self.is_frame_allowed: bool = None
+        self.is_item_scan_event: bool = None
+        self.objects_in_scene: int = None
+        self.object_in_roi: str = None
+        self.time_taken: float = None
+        self.df = pd.DataFrame(columns=["frame_id",
+                                          "is_frame_allowed",
+                                          "is_item_scan_event",
+                                          "objects_in_scene",
+                                          "object_in_roi",
+                                          "time_taken"])
+        
+    def clear_data(self):
+        self.frame_id: int = None
+        self.is_frame_allowed: bool = None
+        self.is_item_scan_event: bool = None
+        self.objects_in_scene: int = None
+        self.object_in_roi: str = None
+        self.time_taken: float = None
+
+    def log(self):
+        new_entry: pd.DataFrame = pd.DataFrame({
+            "frame_id": [self.frame_id],
+            "is_frame_allowed": [self.is_frame_allowed],
+            "is_item_scan_event": [self.is_item_scan_event],
+            "objects_in_scene": [str(self.objects_in_scene).replace(",", " ")],
+            "object_in_roi": [self.object_in_roi],
+            "time_taken": [self.time_taken]  
+            }
+        )
+        self.df = pd.concat([self.df, new_entry], ignore_index=True)
+        self.df.to_csv(self.file_name, index=False)
+        self.clear_data()

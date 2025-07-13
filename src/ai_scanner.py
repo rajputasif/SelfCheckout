@@ -7,7 +7,8 @@ from ultralytics import YOLO
 from src.funcs import (bb_intersection_over_union,
                        draw_detected_object,
                        load_settings,
-                       draw_stats_dict)
+                       draw_stats_dict,
+                       ScanLogger)
 from src.input_events_simulator import InputEventSimulator
 
 
@@ -25,7 +26,7 @@ class AIScanner:
                 "selected_model": settings["selected_model"],
                 "region_bbox": settings["region_bbox"],
                 "selection_mechanism": settings["frame_selection_mechanism"],
-                "denominator": settings["frame_selection_denominator"],
+                "denominator": settings["denominator"],
                 "range": settings["range"],
                 "vizualize_inference": settings["vizualize_inference"],
                 "retention_time": settings["retention_time"],
@@ -90,6 +91,7 @@ class AIScanner:
                                 video_path: str, 
                                 input_event_file: str,
                                 output_video_path: str,
+                                logging_path: str,
                                 ) -> None:
         
         
@@ -97,7 +99,11 @@ class AIScanner:
         if not self.params:
             raise Exception("ERROR: No settings provided!")
         
+        # Initialize the input event simulator
         input_simulator = InputEventSimulator(input_event_file)
+
+        # Initialize the scan logger
+        logger = ScanLogger(logging_path)
 
         # Update the range of frames to full list from start to end
         self.params["range"] = list(range(self.params["range"][0],
@@ -130,6 +136,8 @@ class AIScanner:
         last_roi_object: tuple[str, int] = ("NONE", 0)
 
         while cap.isOpened():
+            logger.frame_id = frame_id
+
             # start time for the each cycle
             start_time = time.time()
 
@@ -142,23 +150,24 @@ class AIScanner:
                 print("ERROR: Failed to read frame or end of video")
                 break
             
-            #NOTE: TASK-2b Check if the frame is allowed to be processed
-            if not self.is_frame_allowed(frame_id):
-                print(f"Skipping frame no: {frame_id}")
+            #NOTE: TASK-2b Check if the frame is allowed to be processed and LOGGING
+            is_frame_allowed = self.is_frame_allowed(frame_id)
+            logger.is_frame_allowed = is_frame_allowed
+            if not is_frame_allowed:
                 frame_id += 1
+                logger.log()
                 continue
 
-            print(f"Frame {frame_id}:")
+            print(f"Processing frame_id: {frame_id}")
 
             # Remove the last_roi_object if the frame is too old
             if last_roi_object[0] != "NONE" and \
                 frame_id - last_roi_object[1] > self.params["retention_time"]:
-
                 last_roi_object = ("NONE", 0)
-                print(f"----> Last ROI object too old (as per criteria), resetting")
 
-            # Get the simulated item_scan event
+            # Get the simulated item_scan event and LOGGING
             this_event = input_simulator.get_item_scan_event(frame_id)
+            logger.is_item_scan_event = this_event["type"] == "item_scan"
 
             # Visualize the scanning region
             draw_detected_object(frame = current_image,
@@ -173,12 +182,17 @@ class AIScanner:
                                   tracker='bytetrack.yaml',
                                   verbose=False)
 
-            # Zipping the predictions to get them in pairs of [bbox, class, confidence]
+            # Zipping the predictions to get them in pairs of [bbox, class, confidence] and LOGGING
+            bboxes = [[int(x) for x in bbox] for bbox in results[0].boxes.xyxy.tolist()]
+            classes = [model.names[int(cls)] for cls in results[0].boxes.cls.tolist()]
+            confidences = [float(round(conf,2)) for conf in results[0].boxes.conf.tolist()]
             zipped_pred = zip(
-                [[int(x) for x in bbox] for bbox in results[0].boxes.xyxy.tolist()],
-                [model.names[int(cls)] for cls in results[0].boxes.cls.tolist()],
-                [float(round(conf,2)) for conf in results[0].boxes.conf.tolist()]
+                bboxes,
+                classes,
+                confidences
             )
+            
+            logger.objects_in_scene = classes
 
             # Remove the "person and laptop" class from the zipped prediction
             remove_classes = ['book', 'laptop', 'bed', 'suitcase']
@@ -189,7 +203,7 @@ class AIScanner:
             draw_stats_dict(current_image,
                             stats_dict = stats_dict,
                             title = "Counting Stats",
-                            x = 50,
+                            x = 20,
                             y = 50)
 
             #NOTE: TASK-4 Draw the detected objects
@@ -198,17 +212,17 @@ class AIScanner:
                                      bbox, 
                                      class_id+" : "+str(confidence))
 
-            # Get the object which is in ROI and updating the last_roi_object
+            # Get the object which is in ROI and updating the last_roi_object and LOGGING
             roi_objects = self.extract_roi_objects(self.params["region_bbox"], 
                                                         zipped_pred)
             if len(roi_objects) > 0:
+                logger.object_in_roi = roi_objects[0][1]
                 last_roi_object = [roi_objects[0][1], frame_id]
-                print(f"----> ROI [{roi_objects[0][1]}]")
 
             # put the last_roi_object on top-right of the current image
             cv2.putText(current_image, 
                         f"Recent ROI item: {last_roi_object[0]}", 
-                        (700, 50),
+                        (650, 50),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, 
                         (255, 255, 255), 
                         2)
@@ -224,10 +238,9 @@ class AIScanner:
                                 x = 20,
                                 y = 250)
         
-            # Detecting if the item_scan event is detected
+            # Detecting if the item_scan event is detected and updating the last_scaned_frame_id
             if this_event["type"] == "item_scan":
                 last_scaned_frame_id = frame_id
-                print(f"----> Item scan type detected: {last_roi_object[0]}")
 
                 # push the element in the output list
                 this_item = dict({
@@ -245,14 +258,15 @@ class AIScanner:
                 cv2.imshow("counting", current_image)
                 cv2.waitKey(1)
 
-            # end time for the whole process
+            # end time for the whole process and LOGGING
             time_taken_ms = int((time.time() - start_time) * 1000)
-            print(f"Time taken: {time_taken_ms} [ms]")
+            logger.time_taken = time_taken_ms
 
             video_writer.write(current_image)
 
             # Increment the frame id
             frame_id += 1
+            logger.log()
 
         cap.release()
         video_writer.release()
