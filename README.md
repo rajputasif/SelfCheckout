@@ -1,1 +1,1 @@
-# Interview Task
+# Self checkout with CV
