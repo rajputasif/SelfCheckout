@@ -2,22 +2,22 @@ import json
 from src.ai_scanner import AIScanner
 
 if __name__ == "__main__":
-    scanner = AIScanner("settings.yaml")
+    # scanner = AIScanner("settings.yaml")
 
     # Forcefully set the parameters for unit testing
-    # scanner = AIScanner()
-    # scanner.params = dict(
-    #     {
-    #         "selected_model": "yolo11s.pt",
-    #         "region_bbox": [370, 30, 630, 200],
-    #         "selection_mechanism": "denominator",
-    #         "denominator": 1,
-    #         "range": [40, 180],
-    #         "vizualize_inference": True,
-    #         "retention_time": 30,
-    #         "vizualization_cooldown_time": 45,
-    #     }
-    # )
+    scanner = AIScanner()
+    scanner.params = dict(
+        {
+            "selected_model": "yolo11s.pt",
+            "region_bbox": [370, 30, 630, 200],
+            "selection_mechanism": "denominator",
+            "denominator": 1,
+            "range": [40, 180],
+            "vizualize_inference": True,
+            "retention_time": 30,
+            "vizualization_cooldown_time": 45,
+        }
+    )
 
     scanned_items = scanner.count_objects_in_region("data/cam_2.mp4",
                                                     "data/input_events.txt",
