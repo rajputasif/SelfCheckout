@@ -1,0 +1,13 @@
+# AI Model related settings
+selected_model: yolo11s.pt                       # model to be used (only name)
+region_bbox: [370, 30, 630, 200]               # region of interest (x1, y1, x2, y2)
+
+# Frame selection related settings
+frame_selection_mechanism: range           # denominator = every nth frame, absolute = absolute frame number
+frame_selection_denominator: 1                   # 1 = every frame, 2 = every other frame, etc.
+range: [50, 180]                        # frames to be processed [start, end]
+  
+# Miscellaneous settings
+vizualize_inference: True                        # visualize the inference results
+retention_time: 10                    
+vizualization_cooldown_time: 10                  
