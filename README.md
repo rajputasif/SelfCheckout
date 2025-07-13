@@ -35,7 +35,9 @@ There exists a possibility that the tracking or detection fails at the exact tim
 NOTE: The cool-off time is set to ~1 seconds (which is assumed to be the normal time a human would move objects) but can be changed in the `settings.yaml` file.
 
 ## Model Architecture selection
-Since the prediction of model architecture is not part of the task, it was decided to use a pre-trained **Yolo11s** model from the [Ultralytics](https://github.com/ultralytics/ultralytics) repository. The system was benchmarked to run roughly ~40 FPS on RTX 3070 GPU. However since the model can be selected from `settings.yaml` file, it can be easily changed to other models (such as `Yolo12` or `Yolo11<m,l,x>`) as well.
+Since the prediction of model architecture is not part of the task, it was decided to use a pre-trained **Yolo11s** model from the [Ultralytics](https://github.com/ultralytics/ultralytics) repository. The system was benchmarked to run roughly ~40 FPS on RTX-3070 GPU. However since the model can be selected from `settings.yaml` file, it can be easily changed to other models (such as `Yolo12` or `Yolo11<m,l,x>`) as well.
+
+![Design](media/logging.png)
 
 ## Metrics / statistics selection
 ## System logs

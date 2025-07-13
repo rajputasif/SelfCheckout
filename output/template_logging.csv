@@ -1,0 +1,255 @@
+frame_id,is_frame_allowed,is_item_scan_event,objects_in_scene,object_in_roi,time_taken
+0,True,False,[],,2128
+1,True,False,[],,18
+2,True,False,[],,17
+3,True,False,[],,17
+4,True,False,[],,16
+5,True,False,[],,16
+6,True,False,[],,16
+7,True,False,[],,16
+8,True,False,['bed'],,98
+9,True,False,['bed'],,16
+10,True,False,['bed'],,39
+11,True,False,['bed'],,17
+12,True,False,[],,15
+13,True,False,[],,16
+14,True,False,[],,16
+15,True,False,[],,16
+16,True,False,[],,15
+17,True,False,[],,16
+18,True,False,[],,16
+19,True,False,['bed'],,15
+20,True,False,['bed'],,16
+21,True,False,['bed'  'bottle'],,16
+22,True,False,['bottle'  'bed'],,17
+23,True,False,['bed'],,16
+24,True,False,['bed'],,14
+25,True,False,['bed'],,15
+26,True,False,['bed'],,15
+27,True,False,['bed'],,14
+28,True,False,[],,20
+29,True,False,[],,17
+30,True,False,['bed'],,15
+31,True,False,[],,15
+32,True,False,[],,14
+33,True,False,['bed'  'cell phone'],,15
+34,True,False,['cell phone'  'bed'  'bottle'],,16
+35,True,False,['bottle'],,14
+36,True,False,['bottle'  'cell phone'  'book'],,15
+37,True,False,['cell phone'],,15
+38,True,False,['cell phone'],,16
+39,True,False,['cell phone'],,15
+40,True,False,['cell phone'],,15
+41,True,False,['chair'],,15
+42,True,False,['remote'  'laptop'  'chair'  'bottle'],,23
+43,True,False,['cell phone'  'remote'],,17
+44,True,False,['cell phone'  'remote'  'cell phone'  'laptop'  'chair'  'chair'],,16
+45,True,False,['laptop'  'remote'],,18
+46,True,False,['laptop'],,17
+47,True,False,['laptop'],,16
+48,True,False,['laptop'],,15
+49,True,False,['laptop'],,16
+50,True,False,['suitcase'],,16
+51,True,False,['bottle'],bottle,18
+52,True,False,['bottle'],bottle,17
+53,True,False,['bottle'],bottle,19
+54,True,False,['bottle'],bottle,18
+55,True,False,['bottle'  'remote'],bottle,17
+56,True,False,['cell phone'],,16
+57,True,False,['cell phone'],,15
+58,True,False,['cell phone'],,16
+59,True,False,['cell phone'  'chair'],,15
+60,True,False,['cell phone'],,16
+61,True,False,['chair'  'cell phone'],,14
+62,True,False,['cell phone'],,17
+63,True,False,['chair'],,15
+64,True,False,['cell phone'],,14
+65,True,False,['cell phone'],,15
+66,True,False,['chair'],,16
+67,True,False,['cell phone'],,18
+68,True,False,[],,14
+69,True,False,[],,15
+70,True,False,[],,16
+71,True,False,[],,14
+72,True,False,[],,13
+73,True,False,[],,14
+74,True,False,[],,15
+75,True,False,[],,23
+76,True,False,[],,19
+77,True,False,['cell phone'],,15
+78,True,False,[],,15
+79,True,False,['remote'  'cell phone'],,15
+80,True,True,['remote'  'cell phone'],,15
+81,True,False,['remote'],,16
+82,True,False,['cell phone'  'remote'],,17
+83,True,False,['remote'  'cell phone'],,16
+84,True,False,['remote'],,15
+85,True,False,['remote'],,16
+86,True,False,['remote'],,18
+87,True,False,['remote'],,17
+88,True,False,['remote'],,18
+89,True,False,['remote'],,18
+90,True,False,['remote'],,25
+91,True,False,['remote'],,18
+92,True,False,['remote'],,17
+93,True,False,['laptop'],,16
+94,True,False,['laptop'],,18
+95,True,False,['laptop'],,17
+96,True,False,[],,15
+97,True,False,['laptop'],,16
+98,True,False,['laptop'],,18
+99,True,False,['laptop'],,17
+100,True,False,['laptop'],,16
+101,True,False,['laptop'],,15
+102,True,False,[],,15
+103,True,False,['cell phone'],,15
+104,True,False,['cell phone'],,16
+105,True,False,['book'  'bottle'  'cell phone'],,16
+106,True,False,['cell phone'  'book'],,17
+107,True,False,['cell phone'],,16
+108,True,False,['cell phone'],,28
+109,True,False,['cell phone'  'bottle'  'cell phone'],,26
+110,True,False,['cell phone'],,23
+111,True,False,['cell phone'  'cell phone'  'bottle'],,27
+112,True,False,['cell phone'],,27
+113,True,False,['cell phone'  'bottle'],cell phone,26
+114,True,False,['cell phone'],cell phone,26
+115,True,False,['cell phone'  'cell phone'],cell phone,29
+116,True,False,['cell phone'  'bottle'],cell phone,35
+117,True,False,['bottle'  'cell phone'],cell phone,27
+118,True,False,['book'  'bottle'],,27
+119,True,False,['book'  'bottle'  'laptop'],,23
+120,True,False,['bottle'  'laptop'  'book'  'book'],,22
+121,True,False,['cell phone'  'bottle'  'book'],,22
+122,True,False,['cell phone'  'bottle'  'book'],,26
+123,True,False,['bottle'],,22
+124,True,False,['bottle'  'book'],,21
+125,True,True,['book'  'bottle'],,29
+126,True,False,['book'  'bottle'],,27
+127,True,False,['bottle'  'book'],,25
+128,True,False,['remote'  'book'  'bottle'],remote,28
+129,True,False,['book'  'bottle'],,22
+130,True,False,['bottle'  'book'],,25
+131,True,False,['book'  'bottle'],,26
+132,True,False,['book'  'bottle'],,24
+133,True,False,['bottle'  'laptop'],,23
+134,True,False,['bottle'],,24
+135,True,False,['bottle'  'laptop'],,24
+136,True,False,['laptop'],,21
+137,True,False,['laptop'],,21
+138,True,False,['laptop'  'bottle'],,28
+139,True,False,['laptop'],,27
+140,True,False,['laptop'],,28
+141,True,False,['laptop'  'laptop'],,31
+142,True,False,['laptop'],,29
+143,True,False,['laptop'],,21
+144,True,False,['cell phone'  'laptop'],,29
+145,True,False,[],,25
+146,True,False,['bottle'  'bottle'],,24
+147,True,False,['cell phone'  'bottle'],,23
+148,True,False,['cell phone'],,27
+149,True,False,['remote'  'bottle'],,29
+150,True,False,[],,25
+151,True,False,['remote'],,23
+152,True,False,['remote'],,25
+153,True,False,['remote'],,24
+154,True,False,['remote'],,26
+155,True,False,['remote'],,22
+156,True,False,['remote'],,22
+157,True,False,['remote'],,22
+158,True,False,['remote'],,27
+159,True,False,['remote'],,24
+160,True,False,['remote'  'cell phone'],,20
+161,True,False,['remote'  'cell phone'],,22
+162,True,False,['remote'  'bottle'],,19
+163,True,False,['remote'],,22
+164,True,False,['remote'],,20
+165,True,False,['remote'],,24
+166,True,False,['remote'],,19
+167,True,False,['remote'],,27
+168,True,False,['book'  'bed'],,22
+169,True,False,['remote'  'book'],,19
+170,True,False,['remote'  'book'  'bed'  'bottle'],,25
+171,True,False,['book'  'laptop'],,21
+172,True,False,['book'],,23
+173,True,False,['book'],,18
+174,True,False,['book'],,25
+175,True,False,['book'],,19
+176,True,False,['book'],,22
+177,True,False,['book'],,19
+178,True,False,['book'],,25
+179,True,False,['book'],,19
+180,True,True,['book'],,24
+181,True,False,['book'],,24
+182,True,False,['book'],,28
+183,True,False,[],,19
+184,True,False,['laptop'],,26
+185,True,False,[],,18
+186,True,False,[],,30
+187,True,False,[],,26
+188,True,False,[],,20
+189,True,False,['bottle'  'bottle'  'laptop'],,36
+190,True,False,['bottle'  'bottle'],,28
+191,True,False,['bottle'  'bottle'  'bottle'],,26
+192,True,False,['laptop'],,24
+193,True,False,['laptop'],,24
+194,True,False,[],,19
+195,True,False,[],,34
+196,True,False,['cell phone'  'bottle'],,33
+197,True,False,[],,25
+198,True,False,['laptop'],,30
+199,True,False,['bottle'  'bottle'],,20
+200,True,False,['bottle'  'bottle'],,27
+201,True,False,['bottle'  'backpack'  'bottle'],,24
+202,True,False,['bottle'  'bottle'],,25
+203,True,False,['bottle'  'bottle'],,34
+204,True,False,['chair'  'bottle'  'bottle'],,26
+205,True,False,['bottle'  'chair'  'bottle'],,28
+206,True,False,['bottle'  'bottle'  'couch'  'chair'],,25
+207,True,False,['bottle'  'bottle'],,25
+208,True,False,['bottle'],,24
+209,True,False,['bottle'],,25
+210,True,False,['bottle'],,23
+211,True,False,['bottle'  'bottle'],,25
+212,True,False,['bottle'],,21
+213,True,False,['bottle'  'bottle'  'bed'],,20
+214,True,False,['bottle'  'bottle'],,24
+215,True,False,['backpack'  'suitcase'  'bottle'],,17
+216,True,False,['suitcase'  'backpack'  'bottle'],,17
+217,True,False,['bottle'  'bottle'  'backpack'  'suitcase'  'bottle'],,17
+218,True,False,['bottle'  'bottle'  'backpack'  'suitcase'  'bottle'],,17
+219,True,False,['backpack'  'bottle'  'suitcase'  'bottle'  'bottle'],,17
+220,True,False,['backpack'  'bottle'  'suitcase'],,17
+221,True,False,['backpack'  'bottle'  'suitcase'  'bottle'],,17
+222,True,False,['backpack'  'bottle'  'suitcase'],,15
+223,True,False,['backpack'  'bottle'  'suitcase'  'bottle'],,15
+224,True,False,['backpack'  'suitcase'  'bottle'  'bottle'],,15
+225,True,False,['backpack'  'bottle'],,15
+226,True,False,['backpack'  'suitcase'  'chair'],,17
+227,True,False,['chair'  'suitcase'  'backpack'  'bottle'],,15
+228,True,False,['backpack'  'suitcase'  'bottle'  'bottle'],,15
+229,True,False,['backpack'  'suitcase'  'chair'],,16
+230,True,False,['backpack'  'suitcase'  'chair'  'bottle'],,18
+231,True,False,['backpack'  'suitcase'  'bottle'  'chair'  'toilet'],,19
+232,True,False,['suitcase'  'bottle'],,17
+233,True,False,['backpack'  'chair'  'suitcase'],,17
+234,True,False,['backpack'  'chair'  'suitcase'],,21
+235,True,False,['backpack'  'suitcase'  'chair'],,17
+236,True,False,['suitcase'  'backpack'  'chair'],,16
+237,True,False,['chair'  'suitcase'  'backpack'],,16
+238,True,False,['suitcase'  'chair'  'backpack'],,19
+239,True,False,['suitcase'  'backpack'],,15
+240,True,False,['backpack'  'suitcase'  'chair'],,14
+241,True,False,['suitcase'  'backpack'  'chair'],,14
+242,True,False,['backpack'  'suitcase'],,15
+243,True,False,['backpack'  'suitcase'],,14
+244,True,False,['backpack'  'suitcase'  'chair'],,15
+245,True,False,['backpack'  'suitcase'],,14
+246,True,False,['backpack'  'suitcase'],,14
+247,True,False,['backpack'  'suitcase'],,17
+248,True,False,['backpack'  'suitcase'],,15
+249,True,False,['backpack'  'suitcase'  'chair'],,18
+250,True,False,['backpack'  'laptop'  'bottle'  'bottle'  'suitcase'],,14
+251,True,False,['backpack'  'laptop'  'bottle'  'bottle'  'suitcase'],,13
+252,True,False,['laptop'  'bottle'  'bottle'  'backpack'],,16
+253,True,False,['bottle'  'bottle'  'laptop'  'backpack'  'chair'],,14
