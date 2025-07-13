@@ -22,6 +22,19 @@ Modify the `settings.yaml` file to suit your needs.
 ## Overall Design
 ![Design](media/overall.png)
 
+### Simplified explanation of the pipeline
+The complete pipeline in `count_objects_in_region()` function is as follows:
+1. Setup the processing parameters from the `settings.yaml` file (or manually set them in the code/unittest).
+2. Read the input event file and simulate the `item_scan` event and create a `ScanLogger` object.
+3. For each frame in the video, perform the following steps:
+    - Decide if the frame is allowed to be processed?
+    - Insert the current `frame` into `Yolo11` tracker and get the prediction.
+    - Draw the bounding box of the region of interest on the current frame.
+    - Detect if any object is in ROI and update the last ROI object (with cool-off time).
+    - Get the `item_scan` event from the input event file? (this will be replaced by actual item_scan event from **Scanner**) if yes, then get the statistics from the last `item_scan` event and merge them with `ai_pred`.
+    - Visualize the statistics, last `item_scan` event and last ROI object.
+    - Log the cycle information and write the frame to the output video.
+
 ![Design](media/final.png)
 
 ## Design Choices and Considerations
