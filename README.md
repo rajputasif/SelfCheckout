@@ -22,6 +22,8 @@ Modify the `settings.yaml` file to suit your needs.
 ## Overall Design
 ![Design](media/overall.png)
 
+![Design](media/final.png)
+
 ## Design Choices and Considerations
 
 ### Monolothic ⛔ vs Modular design ✅
@@ -40,4 +42,9 @@ Since the prediction of model architecture is not part of the task, it was decid
 ![Design](media/logging.png)
 
 ## Metrics / statistics selection
+It is assumed that once the model is trained with actual data, the classes predicted by the model will correspond to the classes coming from the **Scanner's** item_scan event. Furthermore, the AI system will be able to track better. This will result in better detection and low latency time between the **ai_frame** and **scanner_frame** (as shown in following screenshot).
+
+![Design](media/item_event.png)
+
 ## System logs
+A timeseries logger class (namely `ScanLogger`) is created to log the system's performance. The class can be extended to include more metrics and statistics as needed.
